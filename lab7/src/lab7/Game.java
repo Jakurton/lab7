@@ -64,8 +64,9 @@ public class Game extends Application
 				Image playerImage = new Image("file:trashtruck.jpg");
 				ImageView playerView = new ImageView(playerImage);				
 				
-				playerView.setLayoutX(player.playerX); 
-				playerView.setLayoutY(player.playerY);
+				playerView.setLayoutX(player.getPlayerX());	//This doesn't work 
+				playerView.setLayoutY(player.getPlayerY());	// "		"
+				
 				playerView.setFitWidth(120); 
 				playerView.setPreserveRatio(true);
 				
