@@ -11,37 +11,37 @@ public class Player
 	private String truckerName = "";
 	private String imageFile = "";
 	private int trash = 0;
+	private int playerX = 0;
+	private int playerY = 0;
 	
-	private static int playerX = 0;
-	private static int playerY = 0;
-	
-	public Player(String truckerName, String imageFile, int trash)
+	public Player(String truckerName, String imageFile, int trash, int playerX, int playerY)
 	{
 		
 		super();
+		this.playerX = playerX;
+		this.playerY = playerY;
 		this.truckerName = truckerName;
 		this.imageFile = imageFile;
 		this.trash = trash;
 	}
 	
-	public static int getPlayerX()
+	public int getPlayerX()
 	{
 		return playerX;
 	}
 
 	public void setPlayerX(int playerX) {
-		Player.playerX = playerX;
+		this.playerX = playerX;
 	}
 
 	public void setPlayerY(int playerY) {
-		Player.playerY = playerY;
+		this.playerY = playerY;
 	}
 
-	public static int getPlayerY()
+	public int getPlayerY()
 	{
 		return playerY;
 	}
-
 
 	
 	public String toString()
@@ -59,27 +59,32 @@ public class Player
 	
 	public void movePlayer(KeyCode keyCode)
 	{
-		 if (keyCode == KeyCode.A)
+		 
+		if (keyCode == KeyCode.A)
 		    {
 		        setPlayerX(playerX - 10);
+		        System.out.println("X: " + playerX);
+
 		    }
 		   
 		    else if (keyCode == KeyCode.S)
 		    {
-		        setPlayerX(playerY + 10);
+		        setPlayerY(playerY + 10);
+		        System.out.println("Y: " + playerY);
 
 		    }
 		    
 		    else if (keyCode == KeyCode.W)
 		    {
-		        setPlayerX(playerY - 10);
+		        setPlayerY(playerY - 10);
+		        System.out.println("Y: " + playerY);
 
 		    }
 		    
 		    else if (keyCode == KeyCode.D)
 		    {
 		        setPlayerX(playerX + 10);
-
+		        System.out.println("X: " + playerX);
 		    }
 	}
 }

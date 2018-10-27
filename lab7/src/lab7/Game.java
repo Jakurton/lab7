@@ -29,16 +29,19 @@ public class Game extends Application
 		
 	}
 	
-	private int playerX = Player.getPlayerX();
-	private int playerY = Player.getPlayerY();
-	
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
-
-		Image wasdImage = new Image("file:/lab7/src/wasd.jpg");
+		String truckerName = "";
+		String imageFile = "";
+		int trash = 0;
+		int playerX = 0;
+		int playerY = 0;
+		
+		Image wasdImage = new Image("file:wasd.jpg");
 		ImageView wasdView = new ImageView(wasdImage);
 	    wasdView.setPreserveRatio(true);  
+	    wasdView.setFitHeight(125); 
 
 		primaryStage.setTitle("GarbageCollector");
 		
@@ -50,7 +53,7 @@ public class Game extends Application
 		
 		Group root = new Group(pane);
 		
-		Player player = new Player("Jacob", "file:/lab7/src/trashtruck.jpg", 0);
+		Player player = new Player(truckerName, imageFile, trash, playerX, playerY);
 		
 		startButton.setOnAction(new EventHandler<ActionEvent>()
 		{
@@ -58,16 +61,15 @@ public class Game extends Application
 			@Override
 			public void handle(ActionEvent startClick)
 			{
-				Image playerImage = new Image("file:/src/trashtruck.jpg");
-				ImageView playerView = new ImageView(playerImage);
+				Image playerImage = new Image("file:trashtruck.jpg");
+				ImageView playerView = new ImageView(playerImage);				
 				
-				System.out.println("Image loading error: " + playerImage.isError());
-				
-				playerView.setX(playerX); 
-				playerView.setY(playerY);
+				playerView.setLayoutX(player.playerX); 
+				playerView.setLayoutY(player.playerY);
+				playerView.setFitWidth(120); 
 				playerView.setPreserveRatio(true);
 				
-				StackPane gameRoot = new StackPane();
+				FlowPane gameRoot = new FlowPane();
 				
 				gameRoot.getChildren().add(playerView);
 					
