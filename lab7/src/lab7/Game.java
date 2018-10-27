@@ -58,7 +58,7 @@ public class Game extends Application
 			@Override
 			public void handle(ActionEvent startClick)
 			{
-				Image playerImage = new Image("file:src/trashtruck.jpg");
+				Image playerImage = new Image("file:/src/trashtruck.jpg");
 				ImageView playerView = new ImageView(playerImage);
 				
 				System.out.println("Image loading error: " + playerImage.isError());
