@@ -12,13 +12,37 @@ public class Player
 	private String imageFile = "";
 	private int trash = 0;
 	
-	public Player(String truckerName, String imageFile, int trash) {
+	private static int playerX = 0;
+	private static int playerY = 0;
+	
+	public Player(String truckerName, String imageFile, int trash)
+	{
 		
 		super();
 		this.truckerName = truckerName;
 		this.imageFile = imageFile;
-		trash = trash;
+		this.trash = trash;
 	}
+	
+	public static int getPlayerX()
+	{
+		return playerX;
+	}
+
+	public void setPlayerX(int playerX) {
+		Player.playerX = playerX;
+	}
+
+	public void setPlayerY(int playerY) {
+		Player.playerY = playerY;
+	}
+
+	public static int getPlayerY()
+	{
+		return playerY;
+	}
+
+
 	
 	public String toString()
 	{
@@ -32,4 +56,31 @@ public class Player
 	public int getTrash() {
 		return trash;
 	}
+	
+	public void movePlayer(KeyCode keyCode)
+	{
+		 if (keyCode == KeyCode.A)
+		    {
+		        setPlayerX(playerX - 10);
+		    }
+		   
+		    else if (keyCode == KeyCode.S)
+		    {
+		        setPlayerX(playerY + 10);
+
+		    }
+		    
+		    else if (keyCode == KeyCode.W)
+		    {
+		        setPlayerX(playerY - 10);
+
+		    }
+		    
+		    else if (keyCode == KeyCode.D)
+		    {
+		        setPlayerX(playerX + 10);
+
+		    }
+	}
 }
+

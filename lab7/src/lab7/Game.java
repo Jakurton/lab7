@@ -29,23 +29,28 @@ public class Game extends Application
 		
 	}
 	
+	private int playerX = Player.getPlayerX();
+	private int playerY = Player.getPlayerY();
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
 
-		Image image = new Image("file:/lab7/src/wasd.jpg");
-		
-		ImageView imageView = new ImageView(image);
-		
+		Image wasdImage = new Image("file:/lab7/src/wasd.jpg");
+		ImageView wasdView = new ImageView(wasdImage);
+	    wasdView.setPreserveRatio(true);  
+
 		primaryStage.setTitle("GarbageCollector");
 		
 		FlowPane pane = new FlowPane();
 				
 		Button startButton = new Button("Start");
 		
-		pane.getChildren().addAll(startButton, imageView);
+		pane.getChildren().addAll(startButton, wasdView);
 		
 		Group root = new Group(pane);
+		
+		Player player = new Player("Jacob", "file:/lab7/src/trashtruck.jpg", 0);
 		
 		startButton.setOnAction(new EventHandler<ActionEvent>()
 		{
@@ -53,32 +58,24 @@ public class Game extends Application
 			@Override
 			public void handle(ActionEvent startClick)
 			{
+				Image playerImage = new Image("file:src/trashtruck.jpg");
+				ImageView playerView = new ImageView(playerImage);
+				
+				System.out.println("Image loading error: " + playerImage.isError());
+				
+				playerView.setX(playerX); 
+				playerView.setY(playerY);
+				playerView.setPreserveRatio(true);
+				
 				StackPane gameRoot = new StackPane();
-												
+				
+				gameRoot.getChildren().add(playerView);
+					
 				Scene sceneStart = new Scene(gameRoot, 500, 500);
 				Stage gameStage = (Stage) ((Node) startClick.getSource()).getScene().getWindow();
 				
 				sceneStart.setOnKeyPressed(a -> {
-				    if (a.getCode() == KeyCode.A)
-				    {
-				        System.out.println("A pressed");
-				    }
-				   
-				    else if (a.getCode() == KeyCode.S)
-				    {
-				    	System.out.println("S pressed");
-				    }
-				    
-				    else if (a.getCode() == KeyCode.W)
-				    {
-				    	System.out.println("W pressed");
-				    }
-				    
-				    else if (a.getCode() == KeyCode.D)
-				    {
-				    	System.out.println("D pressed");
-				    }
-				    
+				   player.movePlayer(a.getCode());
 				});
 				
 																
